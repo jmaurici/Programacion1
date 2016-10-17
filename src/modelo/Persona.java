@@ -26,6 +26,22 @@ public class Persona {
 		// TODO Auto-generated constructor stub
 	}
 
+	public void setNif(String nif) {
+		this.nif = nif;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setSexo(char sexo) {
+		this.sexo = sexo;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
 	public String getNif() {
 		return nif;
 	}

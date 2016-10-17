@@ -1,5 +1,9 @@
 package control;
 
+import java.util.Date;
+
+import modelo.Persona;
+
 public class Ejercicios1 {
 
 	public static void main(String[] args) {
@@ -27,7 +31,9 @@ public class Ejercicios1 {
 		 */
 		// int numero = 7771;
 		// ej1.listarPrimos(100);
-		ej1.crearHebras(3);
+		//ej1.crearHebras(3);
+		
+		ej1.creaListaPersonas();
 	}
 
 	public void crearHebras(int cuantas) {
@@ -42,9 +48,32 @@ public class Ejercicios1 {
 
 	public void creaListaPersonas() {
 		// crea 3 personas
+		
+		Persona p1 = new Persona("44729867l","Arodi", 'M', new Date ());
+		Persona p2 = new Persona();
+		p2.setNif("44729867b");
+		p2.setNombre("Antonio");
+		p2.setSexo('M');
+		p2.setFecha(new Date());
+		Persona p3 = new Persona("44729867a","Pepe", 'M', new Date ());
+		
 		// define el array para 20 personas
+		Persona[] listaPersonas = new Persona[20];
+		
 		// asigna las personas al array
+		listaPersonas[9]= p1;
+		listaPersonas[1]= p2;
+		listaPersonas[4]= p3;
+		
 		// muestra el nif de las 3 personas
+		
+		for (int i = 0; i < listaPersonas.length; i++) {
+			
+			if (listaPersonas[i] != null)
+			
+			System.out.println(listaPersonas[i].getNombre());
+		}
+		
 	}
 
 	public void listarPrimos(int cuantos) {
