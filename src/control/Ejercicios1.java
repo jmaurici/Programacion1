@@ -1,5 +1,10 @@
 package control;
 
+import java.util.Date;
+
+import modelo.Estudiante;
+import modelo.Persona;
+
 public class Ejercicios1 {
 
 	public static void main(String[] args) {
@@ -27,7 +32,13 @@ public class Ejercicios1 {
 		 */
 		// int numero = 7771;
 		// ej1.listarPrimos(100);
-		ej1.crearHebras(3);
+		// ej1.crearHebras(3);
+
+		// crear un objeto de la clase Estudiante
+
+		Estudiante est1 = new Estudiante("43452345L", "Carlos", 'M', new Date(), 15, "20120901");
+
+		ej1.creaListaPersonas();
 	}
 
 	public void crearHebras(int cuantas) {
@@ -42,9 +53,35 @@ public class Ejercicios1 {
 
 	public void creaListaPersonas() {
 		// crea 3 personas
+		Persona p1 = new Persona("45627812K", "Carlos", 'M', new Date());
+		Persona p2 = new Persona();
+		p2.setNif("44321987H");
+		p2.setNombre("Maria");
+		p2.setSexo('F');
+
+		Persona p3 = new Persona("41298730L", "Felipe", 'M', new Date());
+
 		// define el array para 20 personas
+		Persona[] listaPersonas = new Persona[20];
+
 		// asigna las personas al array
-		// muestra el nif de las 3 personas
+
+		listaPersonas[0] = p1;
+		listaPersonas[10] = p2;
+		listaPersonas[3] = p3;
+
+		// muestra el nombre de las 3 personas
+
+		for (int i = 0; i < listaPersonas.length; i++) {
+			try {
+				// if (listaPersonas[i] != null)
+				System.out.println(listaPersonas[i].getNombre());
+			} catch (NullPointerException e) {
+				// TODO Auto-generated catch block
+				System.out.println("Objeto nulo");
+			}
+		}
+
 	}
 
 	public void listarPrimos(int cuantos) {

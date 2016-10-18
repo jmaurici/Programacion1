@@ -10,6 +10,7 @@ public class Estudiante extends Persona {
 		super(nif, nombre, sexo, fecha);
 		this.grupo = grupo;
 		this.fechaIngreso = fechaIngreso;
+		
 	}
 
 	public String getFechaIngreso() {
