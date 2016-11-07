@@ -45,6 +45,22 @@ public class Ejercicios1 {
 		ej1.adivinaNumero();
 	}
 
+	public String[] ordenaListaCadenas(String[] lista) {
+		for (int i = 0; i < lista.length - 1; i++) {
+			for (int j = i + 1; j < lista.length; j++) {
+				if (lista[i].compareTo(lista[j]) > 0) // hay que permutar
+				{
+                 String aux = lista[i];
+                 lista[i] = lista[j];
+                 lista[j] = aux;
+				}
+			}
+		}
+
+		return lista;
+
+	}
+
 	public int generaAleatorioEntre(int min, int max) {
 		/*
 		 * int numero = min; int diferencia = max -min; Random rnd = new
@@ -98,7 +114,7 @@ public class Ejercicios1 {
 			for (int i = 0; i < intentos.length; i++) {
 
 				try {
-					System.out.printf("%d. \t%d\t%s\n", i+1, intentos[i].getNumero(), intentos[i].getFechaHora());
+					System.out.printf("%d. \t%d\t%s\n", i + 1, intentos[i].getNumero(), intentos[i].getFechaHora());
 				} catch (NullPointerException e) {
 					break;
 				}
