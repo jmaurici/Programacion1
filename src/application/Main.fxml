@@ -1,22 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controlador">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="610.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controlador">
    <children>
       <Button fx:id="fxml_btGenerar" layoutX="163.0" layoutY="93.0" mnemonicParsing="false" onAction="#manejaBoton" prefHeight="31.0" prefWidth="76.0" text="Generar" />
       <TextField fx:id="fxml_minimo" layoutX="20.0" layoutY="93.0" prefHeight="25.0" prefWidth="61.0" promptText="minimo" />
       <TextField fx:id="fxml_maximo" layoutX="90.0" layoutY="93.0" prefHeight="25.0" prefWidth="61.0" promptText="maximo" />
       <TextArea fx:id="fxml_intentos" layoutX="120.0" layoutY="165.0" prefHeight="202.0" prefWidth="511.0" />
-      <Button layoutX="13.0" layoutY="210.0" mnemonicParsing="false" onAction="#manejaBotonJugar" text="PROBAR" />
+      <Button fx:id="fxml_btJugar" layoutX="13.0" layoutY="210.0" mnemonicParsing="false" onAction="#manejaBotonJugar" text="PROBAR" />
       <TextField fx:id="fxml_numeroJugar" layoutX="25.0" layoutY="165.0" prefHeight="25.0" prefWidth="52.0" />
       <Label fx:id="fxml_mensajes" layoutX="255.0" layoutY="96.0" prefHeight="25.0" prefWidth="229.0" textFill="#dd0404" />
       <Label layoutX="124.0" layoutY="14.0" prefHeight="68.0" prefWidth="454.0" text="ADIVINE EL NÚMERO" textAlignment="CENTER">

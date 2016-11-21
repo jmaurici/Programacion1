@@ -42,22 +42,89 @@ public class Ejercicios1 {
 		// Estudiante est1 = new Estudiante("43452345L", "Carlos", 'M', new
 		// Date(), 15, "20120901");
 
-		ej1.adivinaNumero();
+		// ej1.adivinaNumero();
+		String[] nombres = { "Paco", "Carlos", "Maria", "Luis", "Fernando", "Isabel" };
+
+		int[] numeros1 = { 4, 8, 1, 0, 12, 3, 7, 34, 1, 2, 78, 99 };
+		int[] numeros2 = { 2, 2, 1, 13, 1, 8, 17, 4 };
+
+		ej1.ordenaListaNumeros(numeros1);
+		ej1.ordenaListaNumeros(numeros2);
+
+		int[] numeros3 = ej1.mezclaArrayEnteros(numeros1, numeros2);
+		System.out.println("Mezcla terminada");
 	}
 
-	public String[] ordenaListaCadenas(String[] lista) {
+	public int[] mezclaArrayEnteros(int[] a1, int[] a2) {
+
+		int[] a3 = new int[a1.length + a2.length];
+		int i = 0, j = 0, k = 0;
+		while (k < a3.length) {
+			try {
+				if (a1[i] < a2[j]) {
+					a3[k] = a1[i];
+					i++;
+				} else {
+					a3[k] = a2[j];
+					j++;
+				}
+				k++;
+			} catch (ArrayIndexOutOfBoundsException excepcion) {
+				if (i >= a1.length) {
+					a1[a1.length - 1] = Integer.MAX_VALUE;
+					i--;
+				} else if (j >= a2.length) {
+					a2[a2.length - 1] = Integer.MAX_VALUE;
+					j--;
+				}
+			}
+		}
+		return a3;
+	}
+
+	public boolean busquedaBinaria(int buscaMe, int[] enDonde) {
+		int min, max, med;
+		min = 0;
+		max = enDonde.length - 1;
+		while (min <= max) {
+			med = min + (max - min) / 2;
+			if (enDonde[med] == buscaMe)
+				return true;
+			else if (enDonde[med] > buscaMe)
+				max = med - 1;
+			else
+				min = med + 1;
+		}
+		return false;
+	}
+
+	public void ordenaListaNumeros(int[] lista) {
+		for (int i = 0; i < lista.length - 1; i++) {
+			for (int j = i + 1; j < lista.length; j++) {
+				if (lista[i] > (lista[j])) // hay que permutar
+				{
+					int aux = lista[i];
+					lista[i] = lista[j];
+					lista[j] = aux;
+				}
+			}
+		}
+	}
+
+	public void ordenaListaCadenas(String[] lista) {
+		// public String[] ordenaListaCadenas(String[] lista) {
 		for (int i = 0; i < lista.length - 1; i++) {
 			for (int j = i + 1; j < lista.length; j++) {
 				if (lista[i].compareTo(lista[j]) > 0) // hay que permutar
 				{
-                 String aux = lista[i];
-                 lista[i] = lista[j];
-                 lista[j] = aux;
+					String aux = lista[i];
+					lista[i] = lista[j];
+					lista[j] = aux;
 				}
 			}
 		}
 
-		return lista;
+		// return lista;
 
 	}
 

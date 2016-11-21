@@ -24,6 +24,8 @@ public class Controlador {
 	Label fxml_mensajes;
 	@FXML
 	Button fxml_btGenerar;
+	@FXML
+	Button fxml_btJugar;
 	int numeroAdivinar;
 
 	public void jugar() {
@@ -61,8 +63,11 @@ public class Controlador {
 				intento.setRespuesta("Pruebe menor");
 			else if (numeroJugado < numeroAdivinar)
 				intento.setRespuesta("Pruebe mayor");
-			else
+			else{
 				intento.setRespuesta("¡HAS ACERTADO!");
+				fxml_btGenerar.setDisable(false);
+				fxml_btJugar.setDisable(true);
+			}
 			fxml_intentos.appendText(intento.toString());
 			
 		} catch (NumberFormatException excepcion) {

@@ -12,7 +12,7 @@ public class Main extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
 
-			Scene scene = new Scene(root, 400, 400);
+			Scene scene = new Scene(root, 640, 480);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			escenario.setScene(scene);
 			escenario.show();
