@@ -12,6 +12,17 @@ public class Ejercicios1 {
 
 	public static void main(String[] args) {
 		Ejercicios1 ej1 = new Ejercicios1();
+		int[][] datosEnteros = { { 3, 7, 1 }, { 1, 3, 1, 9 }, { 4 }, { -1, -2 } };
+		// int[] sumaFilas = ej1.sumaFilasMatrizEnteros(datosEnteros);
+		int[] sumaColumnas = ej1.sumaColumnasMatrizEnteros(datosEnteros);
+		System.out.println("FIN");
+		/*
+		 * int[][] datosEnteros = { { 3, 7, 1 }, { 1, 3, 1, 0 }, { 4 }, { -1, -2
+		 * } };
+		 * 
+		 * int resultado = ej1.sumaMatrizEnteros(datosEnteros);
+		 * System.out.println(resultado);
+		 */
 
 		/*
 		 * for (int i=0; i < 100 ; i++) ej1.lanzarDado();
@@ -43,16 +54,61 @@ public class Ejercicios1 {
 		// Date(), 15, "20120901");
 
 		// ej1.adivinaNumero();
-		String[] nombres = { "Paco", "Carlos", "Maria", "Luis", "Fernando", "Isabel" };
+		/*
+		 * String[] nombres = { "Paco", "Carlos", "Maria", "Luis", "Fernando",
+		 * "Isabel" };
+		 * 
+		 * int[] numeros1 = { 4, 8, 1, 0, 12, 3, 7, 34, 1, 2, 78, 99 }; int[]
+		 * numeros2 = { 2, 2, 1, 13, 1, 8, 17, 4 };
+		 * 
+		 * ej1.ordenaListaNumeros(numeros1); ej1.ordenaListaNumeros(numeros2);
+		 * 
+		 * int[] numeros3 = ej1.mezclaArrayEnteros(numeros1, numeros2);
+		 * System.out.println("Mezcla terminada");
+		 */
+	}
 
-		int[] numeros1 = { 4, 8, 1, 0, 12, 3, 7, 34, 1, 2, 78, 99 };
-		int[] numeros2 = { 2, 2, 1, 13, 1, 8, 17, 4 };
+	public int[] sumaFilasMatrizEnteros(int[][] matriz) {
+		int[] resultado = new int[matriz.length];
+		for (int i = 0; i < matriz.length; i++) {
+			for (int j = 0; j < matriz[i].length; j++) {
+				resultado[i] += matriz[i][j];
+			}
+		}
+		return resultado;
+	}
 
-		ej1.ordenaListaNumeros(numeros1);
-		ej1.ordenaListaNumeros(numeros2);
+	public int[] sumaColumnasMatrizEnteros(int[][] matriz) {
+		// calculamos el número máximo de columnas
+		int numMaxColumnas = 0;
+		for (int i = 0; i < matriz.length; i++) {
+			if (matriz[i].length > numMaxColumnas)
+				numMaxColumnas = matriz[i].length;
+		}
 
-		int[] numeros3 = ej1.mezclaArrayEnteros(numeros1, numeros2);
-		System.out.println("Mezcla terminada");
+		// recorremos la matriz por COLUMNAS.
+		int[] resultado = new int[numMaxColumnas];
+
+		for (int j = 0; j < numMaxColumnas; j++) {
+			for (int i = 0; i < matriz.length; i++) {
+				//try {
+				if (j < matriz[i].length)
+					resultado[j] += matriz[i][j];
+				/*} catch (ArrayIndexOutOfBoundsException e) {
+					
+				}*/
+			}
+		}
+		return resultado;
+	}
+
+	public int sumaMatrizEnteros(int[][] matriz) {
+		int suma = 0;
+		for (int i = 0; i < matriz.length; i++) {
+			for (int j = 0; j < matriz[i].length; j++)
+				suma += matriz[i][j];
+		}
+		return suma;
 	}
 
 	public int[] mezclaArrayEnteros(int[] a1, int[] a2) {
