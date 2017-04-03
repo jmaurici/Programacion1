@@ -1,71 +1,239 @@
 package control;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Set;
 
 import modelo.Estudiante;
 import modelo.Intento;
 import modelo.Persona;
 
 public class Ejercicios1 {
+	private Scanner teclado = new Scanner(System.in);
 
 	public static void main(String[] args) {
+
+		Ejercicios2 ej2 = new Ejercicios2();
+		// ej2.insertarEnPersonas();
+		// HashMap<String, Persona> hm = ej2.getmPersonas();
+		// ej2.crearMapaPersonas(ej2.getPersonas());
+
+		// System.out.println(hm.size());
+		String[] ks = { "nif", "nombre", "cpostal" };
+		String[] vs = { "44561239P", "Maria", "35011" };
+		ArrayList<HashMap<String, String>> valorDevuelto = Ejercicios2.creaDatos(ks, vs);
+
+		String[] ks2 = { "gc", "lte", "ftv", "tfe", "lpa", "gom", "hie" };
+		// visitantes por islas/meses en un año dado, en miles
+		int[][] vs2 = {
+				// ene feb mar abr ......
+				{ 1, 142, 151, 133, 101, 132, 152, 180, 131, 142, 131, 2 }, // gc
+				{ 1, 14, 15, 13, 10, 13, 15, 18, 13, 14, 13, 2 }, // lte ..
+				{ 1, 14, 15, 13, 10, 13, 15, 18, 13, 14, 13, 2 }, { 1, 14, 15, 13, 10, 13, 15, 18, 13, 14, 13, 2 },
+				{ 1, 14, 15, 13, 10, 13, 15, 18, 13, 14, 13, 2 }, { 1, 14, 15, 13, 10, 13, 15, 18, 13, 14, 13, 2 },
+				{ 1, 14, 15, 13, 10, 13, 15, 18, 13, 14, 13, 2 } };
+		// ArrayList<HashMap<Integer, Integer>> valorDevuelto2 =
+		// Ejercicios2.creaDatos2(ks2, vs2);
+		// ej2.mostrarVisitantesIslaMes(valorDevuelto2);
+		// int[] acumuladoIsla = ej2.getVisitantesIslaYear(valorDevuelto2);
+		// int[] acumuladoMes = ej2.getVisitantesMesYear(valorDevuelto2);
+		//int[] acumuladoMes = ej2.getVisitantesMesFichero("ficheros/Turistas2016.txt");
+		 HashMap<String, Integer> acumuladoIsla = ej2.getVisitantesIslaFichero3("ficheros/Turistas2016.txt");
+
+		System.exit(0);
 		Ejercicios1 ej1 = new Ejercicios1();
-		int[][] datosEnteros = { { 3, 7, 1 }, { 1, 3, 1, 9 }, { 4 }, { -1, -2 } };
-		// int[] sumaFilas = ej1.sumaFilasMatrizEnteros(datosEnteros);
-		int[] sumaColumnas = ej1.sumaColumnasMatrizEnteros(datosEnteros);
-		System.out.println("FIN");
-		/*
-		 * int[][] datosEnteros = { { 3, 7, 1 }, { 1, 3, 1, 0 }, { 4 }, { -1, -2
-		 * } };
-		 * 
-		 * int resultado = ej1.sumaMatrizEnteros(datosEnteros);
-		 * System.out.println(resultado);
-		 */
+		ej1.menu("\t MANTENIMIENTO  DE PERSONAS\n");
 
-		/*
-		 * for (int i=0; i < 100 ; i++) ej1.lanzarDado();
-		 */
-		// int x = 1000;//
-		// ej1.listaNPrimerosEnteros(x);
-		// ej1.bucleReloj();
-		// int x = 134;
-		// int y = 138;
+		System.out.println("FIN DEL PROGRAMA");
+	}
 
-		// int resultado = ej1.sumaIntervalo(x, y);
+	private void menu(String titulo) {
+		Ejercicios2 ej2 = new Ejercicios2();
+		// ej2.mediaEnterosFichero("ficheros/enteros.txt");
+		// ej2.escribirLanzamientosDadoFichero(1000);
+		// HashMap<String, ArrayList<Integer>> clasificacion =
+		// ej2.creaClasificacion2("ficheros/partidos.txt");
+		String[] equipos = { "RMA", "BCNA", "UDLP", "ALA", "RSO", "BET", "EIB", "ATM", "ATB", "SEV", "VIL", "ESP",
+				"CEL", "VAL", "DEP", "MLG", "LEG", "GRA", "SPO", "OSA" };
+		// ej2.creaPartidosTodos("ficheros/partidosTodos.txt", equipos);
+		HashMap<String, Integer> clasificacion = ej2.creaClasificacion("ficheros/partidosTodos.txt");
+		// mostrar clasificacion ordenada por puntos (valor)
+		System.out.println("Antes ordenación");
 
-		// System.out.println(" Suma en intervalo " + x + ", " + y + " es " +
-		// resultado);
-		// int z = 50;
-		// ej1.fibonacci(z);
-		/*
-		 * int cuantasLanzadas = 500; int[] salida =
-		 * ej1.lanzadas(cuantasLanzadas); ej1.mostrarLanzadas(salida,
-		 * cuantasLanzadas);
-		 */
-		// int numero = 7771;
-		// ej1.listarPrimos(100);
-		// ej1.crearHebras(3);
+		Set<String> claves = clasificacion.keySet();
+		Iterator<String> iterador = claves.iterator();
+		while (iterador.hasNext()) {
+			String equipo = iterador.next();
+			System.out.println(equipo + " : " + clasificacion.get(equipo));
+		}
+		System.out.println("Después de ordenación por los puntos (valor)");
 
-		// crear un objeto de la clase Estudiante
+		Map<String, Integer> clasificacionOrdenada = sortByValues(clasificacion);
 
-		// Estudiante est1 = new Estudiante("43452345L", "Carlos", 'M', new
-		// Date(), 15, "20120901");
+		Set<String> claves2 = clasificacionOrdenada.keySet();
+		Iterator<String> iterador2 = claves2.iterator();
+		while (iterador2.hasNext()) {
+			String equipo = iterador2.next();
+			System.out.println(equipo + " : " + clasificacion.get(equipo));
+		}
 
-		// ej1.adivinaNumero();
-		/*
-		 * String[] nombres = { "Paco", "Carlos", "Maria", "Luis", "Fernando",
-		 * "Isabel" };
-		 * 
-		 * int[] numeros1 = { 4, 8, 1, 0, 12, 3, 7, 34, 1, 2, 78, 99 }; int[]
-		 * numeros2 = { 2, 2, 1, 13, 1, 8, 17, 4 };
-		 * 
-		 * ej1.ordenaListaNumeros(numeros1); ej1.ordenaListaNumeros(numeros2);
-		 * 
-		 * int[] numeros3 = ej1.mezclaArrayEnteros(numeros1, numeros2);
-		 * System.out.println("Mezcla terminada");
-		 */
+		System.exit(0);
+		// ej2.insertarEnPersonas();
+		for (;;) { // while(true)
+			System.out.println(titulo);
+			System.out.println("\t\t1. Gestión de lista");
+			System.out.println("\t\t2. Gestión de mapa");
+
+			System.out.println("\t\t0. Salir del programa");
+			String tecleado = teclado.nextLine();
+
+			try {
+				int opcion = 0;
+				opcion = Integer.parseInt(tecleado);
+				switch (opcion) {
+				case 1:
+					menuList("Gestión de ArrayList");
+					break;
+				case 2:
+					menuMap("Gestión de HashMap");
+					break;
+				case 0:
+					return; // salida del menú
+				default:
+					break;
+				}
+			} catch (NumberFormatException e) {
+				// entra por aqui si se equivoca y teclea un valor no entero
+			}
+		}
+	}
+
+	private static HashMap sortByValues(HashMap map) {
+		List list = new LinkedList(map.entrySet());
+		// Defined Custom Comparator here
+		Collections.sort(list, new Comparator() {
+			public int compare(Object o1, Object o2) {
+				return ((Comparable) ((Map.Entry) (o2)).getValue()).compareTo(((Map.Entry) (o1)).getValue());
+			}
+		});
+
+		// Here I am copying the sorted list in HashMap
+		// using LinkedHashMap to preserve the insertion order
+		HashMap sortedHashMap = new LinkedHashMap();
+		for (Iterator it = list.iterator(); it.hasNext();) {
+			Map.Entry entry = (Map.Entry) it.next();
+			sortedHashMap.put(entry.getKey(), entry.getValue());
+		}
+		return sortedHashMap;
+	}
+
+	public void menuList(String titulo) {
+		Ejercicios2 ej2 = new Ejercicios2();
+		ej2.insertarEnPersonas();
+		for (;;) { // while(true)
+			System.out.println(titulo);
+			System.out.println("\t\t1. Listar todas las personas");
+			System.out.println("\t\t2. Crear una persona");
+			System.out.println("\t\t3. Modificar datos de una persona (NIF)");
+			System.out.println("\t\t4. Eliminar una persona de la lista (ID)");
+			System.out.println("\t\t5. Eliminar una persona de la lista (NIF)");
+			System.out.println("\t\t0. Volver al menú anterior1");
+			String tecleado = teclado.nextLine();
+
+			try {
+				int opcion = 0;
+				opcion = Integer.parseInt(tecleado);
+				switch (opcion) {
+				case 1:
+					ej2.recorrerListaPersonas2();
+					// listarTodos();
+					break;
+				case 2:
+					ej2.crearPersona();
+					break;
+				case 3:
+					ej2.modificarPersona();
+					break;
+				case 4:
+					ej2.borrarPersona();
+					break;
+				case 5:
+					ej2.borrarPersonaNif();
+					break;
+				case 0:
+					return; // salida del menú
+				default:
+					break;
+				}
+			} catch (NumberFormatException e) {
+				// entra por aqui si se equivoca y teclea un valor no entero
+			}
+		}
+
+	}
+
+	public void menuMap(String titulo) {
+		Ejercicios2 ej2 = new Ejercicios2();
+		ej2.insertarEnMapaPersonas();
+
+		for (;;) { // while(true)
+			System.out.println(titulo);
+			System.out.println("\t\t1. Listar todas las personas");
+			System.out.println("\t\t2. Crear una persona");
+			System.out.println("\t\t3. Modificar datos de una persona (NIF)");
+			System.out.println("\t\t4. Eliminar una persona de la lista (ID)");
+			System.out.println("\t\t5. Eliminar una persona de la lista (NIF)");
+			System.out.println("\t\t0. Volver al menu anterior");
+			String tecleado = teclado.nextLine();
+
+			try {
+				int opcion = 0;
+				opcion = Integer.parseInt(tecleado);
+				switch (opcion) {
+				case 1:
+					ej2.recorrerMapa(ej2.getmPersonas());
+					break;
+				case 2:
+					ej2.crearPersonaEnMapa(ej2.getmPersonas());
+					break;
+				case 3:
+					ej2.modificarPersona();
+					break;
+				case 4:
+					ej2.borrarPersonaIdEnMapa(ej2.getmPersonas());
+					break;
+				case 5:
+					ej2.borrarPersonaNif();
+					break;
+				case 0:
+					return; // salida del menú
+				default:
+					break;
+				}
+			} catch (NumberFormatException e) {
+				// entra por aqui si se equivoca y teclea un valor no entero
+			}
+		}
+
+	}
+
+	public void modificarPersona() {
+		System.out.println("modificarPersona");
+	}
+
+	public void borrarPersona() {
+		System.out.println("borrarPersona");
 	}
 
 	public int[] sumaFilasMatrizEnteros(int[][] matriz) {
@@ -91,12 +259,14 @@ public class Ejercicios1 {
 
 		for (int j = 0; j < numMaxColumnas; j++) {
 			for (int i = 0; i < matriz.length; i++) {
-				//try {
+				// try {
 				if (j < matriz[i].length)
 					resultado[j] += matriz[i][j];
-				/*} catch (ArrayIndexOutOfBoundsException e) {
-					
-				}*/
+				/*
+				 * } catch (ArrayIndexOutOfBoundsException e) {
+				 * 
+				 * }
+				 */
 			}
 		}
 		return resultado;
@@ -315,13 +485,13 @@ public class Ejercicios1 {
 
 	public void creaListaPersonas() {
 		// crea 3 personas
-		Persona p1 = new Persona("45627812K", "Carlos", 'M', new Date());
+		Persona p1 = new Persona("45627812K", "Carlos", 'M', 19801109);
 		Persona p2 = new Persona();
 		p2.setNif("44321987H");
 		p2.setNombre("Maria");
 		p2.setSexo('F');
 
-		Persona p3 = new Persona("41298730L", "Felipe", 'M', new Date());
+		Persona p3 = new Persona("41298730L", "Felipe", 'M', 19811129);
 
 		// define el array para 20 personas
 		Persona[] listaPersonas = new Persona[20];

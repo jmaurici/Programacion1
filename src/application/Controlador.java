@@ -1,17 +1,25 @@
 package application;
 
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
+import java.util.ResourceBundle;
 
+import control.Ejercicios2;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import modelo.Intento;
+import modelo.Persona;
 
-public class Controlador {
+public class Controlador implements Initializable {
 	@FXML
 	TextField fxml_minimo;
 	@FXML
@@ -26,6 +34,8 @@ public class Controlador {
 	Button fxml_btGenerar;
 	@FXML
 	Button fxml_btJugar;
+	@FXML
+	ListView<Persona> fxml_lista;
 	int numeroAdivinar;
 
 	public void jugar() {
@@ -73,6 +83,14 @@ public class Controlador {
 		} catch (NumberFormatException excepcion) {
 		}
 
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		Ejercicios2 ej2 = new Ejercicios2();
+		ej2.insertarEnPersonas();
+		fxml_lista.setItems(FXCollections.observableArrayList(ej2.getPersonas()));
 	}
 
 }

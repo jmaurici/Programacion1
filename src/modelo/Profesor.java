@@ -5,7 +5,7 @@ import java.util.Date;
 public class Profesor extends Persona {
 	private  int depto;
 
-	public Profesor(String nif, String nombre, char sexo, Date fecha, int depto) {
+	public Profesor(String nif, String nombre, char sexo, int fecha, int depto) {
 		super(nif, nombre, sexo, fecha);
 		this.depto = depto;
 	}
